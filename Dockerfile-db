@@ -1,0 +1,5 @@
+FROM postgres:latest
+ENV POSTGRES_DB=shopping_cart
+ENV POSTGRES_USER=user
+ENV POSTGRES_PASSWORD=password
+

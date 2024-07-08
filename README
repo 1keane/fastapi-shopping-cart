@@ -1,0 +1,75 @@
+Shopping Cart
+
+
+PREREQ
+The following prerequisites were done:
+
+1) Create path
+mkdir shopping_cart
+cd shopping_cart
+  
+2) Create and activate virtual environment:
+python3 -m venv shopping_cart
+source shopping_cart/bin/activate
+
+3) Install FastAPI, Uvicorn, and SQLModel
+pip install --upgrade pip
+pip install fastapi uvicorn sqlmodel pytest
+
+
+CREATE
+To create and run the two Docker containers for this app (api and db):
+
+1) Create and run the Docker containers
+sh ./docker-run.sh
+
+
+USAGE
+To interact with the Shopping Cart app, use commands like the following:
+
+1) Create a shopping Cart:
+curl -X POST "http://localhost:8000/carts/" -H "Content-Type: application/json" -d '{"items": [{"name": "Item 1", "price": 10}, {"name": "Item 2", "price": 25}]}'
+
+2) Delete a shopping Cart:
+curl -X DELETE "http://localhost:8000/carts/1"
+
+3) Get all shopping Carts:
+curl -X GET "http://localhost:8000/carts/"
+
+4) Add items to a shopping cart by ID:
+curl -X POST "http://localhost:8000/carts/1/items/" -H "Content-Type: application/json" -d '{"name": "New Item", "price": 20}'
+
+5) Get all items within a shopping cart by ID:
+curl -X GET "http://localhost:8000/carts/1/items/"
+
+6) Create Items:
+curl -X POST "http://localhost:8000/items/" -H "Content-Type: application/json" -d '{"name": "New Item", "price": 20}'
+
+7) Update Items:
+curl -X PUT "http://localhost:8000/items/1" -H "Content-Type: application/json" -d '{"name": "Updated Item", "price": 25}'
+
+8) Get Items:
+curl -X GET "http://localhost:8000/items/1"
+
+9) Delete Items:
+curl -X DELETE "http://localhost:8000/items/1"
+
+10) Healthcheck:
+curl -X GET "http://localhost:8000/healthcheck/"
+
+
+TESTING
+To run the unit tests:
+
+pytests test-main.py
+
+
+- - - - 
+Note to Mike: The scope of this homework was a stretch for me as it has been a long time since I have been working in pure development.
+
+I spent a full 8-10 hour day researching how to do parts I did not already know and put together the enclosed app.
+
+I am aware that there is a bug that is causing the unit tests to not run. I have reworked the code back and forth many times, but just could not resolve that issue.
+
+Thank you,
+Andrew
